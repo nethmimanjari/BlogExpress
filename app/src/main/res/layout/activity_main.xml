@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card"
+    tools:ignore="HardcodedText,ContentDescription">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Header: logo + app name + Select button -->
+        <LinearLayout
+            android:id="@+id/normalHeader"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_logo_small">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_edit"
+                    app:tint="@color/on_primary" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BlogExpress"
+                    android:textColor="@color/text_primary"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtHeaderCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSelect"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="40dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:text="Select"
+                android:textSize="13sp"
+                app:cornerRadius="20dp" />
+        </LinearLayout>
+
+        <!-- Shown instead of the header while selecting posts -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/selectionToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:visibility="gone"
+            app:menu="@menu/menu_selection"
+            app:navigationIcon="@drawable/ic_close"
+            app:titleTextColor="@color/text_primary" />
+
+        <!-- Search box (Search tab only) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchLayout"
+            style="@style/Widget.BlogExpress.SearchBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            app:endIconMode="clear_text"
+            app:hintEnabled="false"
+            app:startIconDrawable="@drawable/ic_search">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search titles and content…"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <!-- Content area -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/bg"
+            android:orientation="vertical">
+
+            <!-- Upload tab banner -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/uploadBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/primary_light"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/txtUploadBanner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/primary_dark"
+                        android:textSize="14sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnUploadAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="12dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:minHeight="44dp"
+                        android:text="Upload all"
+                        android:textSize="13sp"
+                        app:cornerRadius="22dp"
+                        app:icon="@drawable/ic_upload"
+                        app:iconSize="18dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/txtSectionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="40dp" />
+
+                <LinearLayout
+                    android:id="@+id/emptyView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="32dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/imgEmpty"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:background="@drawable/bg_circle"
+                        android:padding="24dp"
+                        android:src="@drawable/ic_edit"
+                        app:tint="@color/primary" />
+
+                    <TextView
+                        android:id="@+id/txtEmptyTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtEmptyMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <!-- Bottom navigation -->
+        <LinearLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:background="@color/card"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/navHome"
+                style="@style/BlogExpress.NavItem">
+
+                <ImageView
+                    android:id="@+id/navHomeIcon"
+                    style="@style/BlogExpress.NavIcon"
+                    android:src="@drawable/ic_home" />
+
+                <TextView
+                    android:id="@+id/navHomeLabel"
+                    style="@style/BlogExpress.NavLabel"
+                    android:text="Home" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/navSearch"
+                style="@style/BlogExpress.NavItem">
+
+                <ImageView
+                    android:id="@+id/navSearchIcon"
+                    style="@style/BlogExpress.NavIcon"
+                    android:src="@drawable/ic_search" />
+
+                <TextView
+                    android:id="@+id/navSearchLabel"
+                    style="@style/BlogExpress.NavLabel"
+                    android:text="Search" />
+            </LinearLayout>
+
+            <!-- Space under the big + button -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/navUpload"
+                style="@style/BlogExpress.NavItem">
+
+                <ImageView
+                    android:id="@+id/navUploadIcon"
+                    style="@style/BlogExpress.NavIcon"
+                    android:src="@drawable/ic_upload" />
+
+                <TextView
+                    android:id="@+id/navUploadLabel"
+                    style="@style/BlogExpress.NavLabel"
+                    android:text="Upload" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/navSettings"
+                style="@style/BlogExpress.NavItem">
+
+                <ImageView
+                    android:id="@+id/navSettingsIcon"
+                    style="@style/BlogExpress.NavIcon"
+                    android:src="@drawable/ic_settings" />
+
+                <TextView
+                    android:id="@+id/navSettingsLabel"
+                    style="@style/BlogExpress.NavLabel"
+                    android:text="Settings" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Big round + button floating over the bottom bar -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="34dp"
+        android:contentDescription="New post"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/primary"
+        app:fabCustomSize="62dp"
+        app:maxImageSize="30dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.BlogExpress.Circle"
+        app:tint="@color/on_primary" />
+</FrameLayout>

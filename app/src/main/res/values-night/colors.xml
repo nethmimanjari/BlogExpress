@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#D0BCFF</color>
+    <color name="on_primary">#381E72</color>
+    <color name="primary_dark">#EADDFF</color>
+    <color name="primary_light">#4F378B</color>
+
+    <color name="bg">#141218</color>
+    <color name="card">#1F1C24</color>
+    <color name="input_bg">#2B2833</color>
+    <color name="text_primary">#E6E0E9</color>
+    <color name="text_secondary">#ACA6B4</color>
+    <color name="divider">#36323E</color>
+
+    <color name="success">#8BD58F</color>
+    <color name="success_light">#1F3A23</color>
+    <color name="draft">#FFD27A</color>
+    <color name="draft_light">#43360F</color>
+    <color name="danger">#F2B8B5</color>
+    <color name="danger_light">#4D1F1C</color>
+</resources>

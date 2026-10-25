@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Saved post images: /data/data/<app>/files/images -->
+    <files-path name="images" path="images/" />
+    <!-- Temporary camera photos: /data/data/<app>/cache/camera -->
+    <cache-path name="camera" path="camera/" />
+</paths>
